@@ -1,0 +1,15 @@
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" identifier="planets" title="The red planet" adaptive="false" timeDependent="false">
+  <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+    <correctResponse><value>B</value></correctResponse>
+  </responseDeclaration>
+  <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float"/>
+  <itemBody>
+    <choiceInteraction responseIdentifier="RESPONSE" maxChoices="1">
+      <prompt>Which planet is known as the red planet?</prompt>
+      <simpleChoice identifier="A">Venus</simpleChoice>
+      <simpleChoice identifier="B">Mars</simpleChoice>
+      <simpleChoice identifier="C">Jupiter</simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+  <responseProcessing template="http://www.imsglobal.org/question/qti_v2p1/rptemplates/match_correct"/>
+</assessmentItem>

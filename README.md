@@ -1,16 +1,61 @@
 # qti3
 
-`qti3` is a dependency-light, framework-neutral TypeScript reference implementation for
-QTI 3 assessment items. The core engine and CLI ship with zero third-party runtime dependencies.
+Render and score QTI 3 assessment items in your app. `qti3` provides a TypeScript core,
+a native Web Component player, optional React and Preact adapters, and tools for migrating
+older QTI content. The core engine and CLI have zero third-party runtime dependencies.
 
-Use the [interactive qti3 manual](https://longsightgroup.github.io/qti3/) to load reference
-fixtures, QTI packages, or item XML and inspect rendering, scoring, validation, state, diagnostics,
-and accessibility evidence. The
-[shared vocabulary gallery](https://longsightgroup.github.io/qti3/sv-gallery/) provides runnable
-matrix fixtures for presentation-class review.
+**[Try the live demo](https://longsightgroup.github.io/qti3/)** ·
+**[Use in your app](https://longsightgroup.github.io/qti3/integration.html)** ·
+**[Try item conversion](https://longsightgroup.github.io/qti3/convert.html)**
 
-The project publishes packages on npm for parsing, validating, rendering, scoring, serializing,
-restoring, and testing QTI 3 items. The core has no UI framework dependency.
+<a href="https://longsightgroup.github.io/qti3/"><img src="docs/images/player-preview.png" alt="The qti3 player showing a multiple-choice item and its score" width="560"></a>
+
+## Start with a working item
+
+In a browser app bundled with Vite or similar tooling, install the player and public synthetic fixtures:
+
+```sh
+pnpm add @longsightgroup/qti3-player @longsightgroup/qti3-fixtures
+```
+
+Add the player to your HTML:
+
+```html
+<qti-assessment-item-player></qti-assessment-item-player>
+<script type="module" src="/src/main.js"></script>
+```
+
+In `src/main.js`, register the element and load a fixture:
+
+```js
+import { defineQtiAssessmentItemPlayer } from "@longsightgroup/qti3-player";
+import xml from "@longsightgroup/qti3-fixtures/xml/choice-reference.xml?raw";
+
+defineQtiAssessmentItemPlayer();
+const player = document.querySelector("qti-assessment-item-player");
+await player.loadXml(xml, { status: "interacting" });
+```
+
+Choose an answer to update the response. The `?raw` import uses Vite's text import support;
+with another bundler, pass the item XML as a string. This fixture includes an answer key for
+local preview. For graded delivery, prepare candidate-safe XML and score on the server;
+see [candidate view](#candidate-view).
+
+## Build your first integration
+
+| Your task                         | Guide                                                               | Runnable example                               |
+| --------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------- |
+| Render a question in React        | [Render a QTI 3 question in React](docs/guides/render-qti-react.md) | `pnpm dev:adapter-react`                       |
+| Score responses without a browser | [Score QTI responses in Node](docs/guides/score-qti-node.md)        | `node examples/manual/quick-start/score.mjs`   |
+| Convert older item XML            | [Migrate QTI 2 items to QTI 3](docs/guides/migrate-qti2.md)         | `node examples/manual/quick-start/migrate.mjs` |
+
+Run repository examples after `pnpm install` and `pnpm build`. Each guide also explains
+how to use the published packages in your own project.
+
+The [interactive manual](https://longsightgroup.github.io/qti3/) loads reference fixtures,
+QTI packages, or item XML and shows rendering, scoring, validation, state, diagnostics,
+and accessibility evidence. The [shared vocabulary gallery](https://longsightgroup.github.io/qti3/sv-gallery/)
+provides runnable presentation-class examples.
 
 qti3 covers QTI item and question-type conformance. Host products provide runners, controllers,
 LMS shells, candidate attempt policy, analytics, proctoring, rostering, and gradebook integrations.
