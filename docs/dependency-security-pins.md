@@ -32,6 +32,16 @@ published QTI packages do not depend on it.
 
 This update does not resolve
 [GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf),
-which affects versions through 4.0.7. No patched release is available. The normal
-high-severity audit gate remains enabled with no exception for this advisory.
-Update the pin and dependency allowlist when a patched version becomes available.
+which affects versions through 4.0.7. No patched release is available as of
+November 17, 2026.
+
+The workspace accepts a development-tool exception for this advisory only.
+Vite and Vitest match repository-controlled file patterns; QTI assessment content
+is not passed to picomatch. Published-package dependencies audit clean before
+applying the exception. This accepts the unresolved development risk; it does
+not fix picomatch. The high-severity audit threshold and all other findings
+remain enforced.
+
+Remove the exception and update the pin and dependency allowlist when a patched
+release becomes available. Review the exception when changing Vite or Vitest,
+accepting untrusted glob patterns, or adding published runtime dependencies.

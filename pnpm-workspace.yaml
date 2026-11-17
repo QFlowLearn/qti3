@@ -11,3 +11,8 @@ overrides:
 # Allow this reviewed security patch before the configured seven-day delay.
 minimumReleaseAgeExclude:
   - "source-map-js@1.2.2"
+
+# Accepted development-tool risk; remove when patched. See docs/dependency-security-pins.md.
+auditConfig:
+  ignoreGhsas:
+    - GHSA-fc5q-39xc-vjpf
