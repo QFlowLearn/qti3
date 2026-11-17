@@ -2,10 +2,11 @@ packages:
   - "packages/*"
   - "examples/*"
 
-# Security patches for the existing formatter and Vite toolchain.
+# Reviewed transitive versions for the formatter and Vite toolchain.
 overrides:
   "tinypool@2.1.0": "2.1.2"
   "source-map-js@1.2.1": "1.2.2"
+  "picomatch": "4.0.7"
 
 # Allow this reviewed security patch before the configured seven-day delay.
 minimumReleaseAgeExclude:

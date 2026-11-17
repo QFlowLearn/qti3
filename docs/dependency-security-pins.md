@@ -23,3 +23,15 @@ Verify changes with a frozen-lockfile install, `pnpm audit --audit-level high` a
 `pnpm verify`. The normal CI audit threshold and release checks remain enabled.
 Remove each override when the corresponding upstream toolchain resolves a reviewed
 patched version by default; remove the exact age exception when it is unnecessary.
+
+## Picomatch toolchain version
+
+The workspace pins transitive picomatch dependencies to 4.0.7, the latest published
+release as of November 17, 2026. Vite and Vitest use it for development tooling;
+published QTI packages do not depend on it.
+
+This update does not resolve
+[GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf),
+which affects versions through 4.0.7. No patched release is available. The normal
+high-severity audit gate remains enabled with no exception for this advisory.
+Update the pin and dependency allowlist when a patched version becomes available.
