@@ -474,10 +474,12 @@ test("rejects invalid stored records and reports a real database-open failure", 
         };
         transaction.addEventListener("abort", () => {
           database.close();
-          reject(transaction.error);
+          reject(transaction.error ?? new Error("Package fixture transaction aborted."));
         });
       };
-      request.addEventListener("error", () => reject(request.error));
+      request.addEventListener("error", () =>
+        reject(request.error ?? new Error("Package fixture database could not be opened.")),
+      );
     });
   });
   const result = await page.evaluate(async () => {
@@ -497,7 +499,9 @@ test("rejects invalid stored records and reports a real database-open failure", 
         request.result.close();
         resolve();
       };
-      request.addEventListener("error", () => reject(request.error));
+      request.addEventListener("error", () =>
+        reject(request.error ?? new Error("Package fixture database could not be opened.")),
+      );
     });
   });
   await page.reload();

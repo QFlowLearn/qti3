@@ -78,15 +78,17 @@ export function renderDrawingResponse(
       if (strokes.length === 0) {
         update(null);
       } else {
-        void exportDrawingResponse(interaction, width, height, strokes, () => {
+        exportDrawingResponse(interaction, width, height, strokes, () => {
           const currentHref = currentDrawingBackgroundHref(surface);
           if (activeBackgroundIsAuthored && currentHref) {
             resolvedAuthoredBackgroundHref = currentHref;
           }
           return currentHref ?? activeBackgroundHref;
-        }).then((value) => {
-          if (version === commitVersion) update(value);
-        });
+        })
+          .then((value) => {
+            if (version === commitVersion) update(value);
+          })
+          .catch(reportError);
       }
     }
     announceDrawingStrokeStatus(

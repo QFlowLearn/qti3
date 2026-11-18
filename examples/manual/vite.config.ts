@@ -39,7 +39,7 @@ export default defineConfig({
     jsxImportSource: "react",
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         index: resolve(repoRoot, "examples/manual/index.html"),
         convert: resolve(repoRoot, "examples/manual/convert.html"),

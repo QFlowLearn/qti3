@@ -58,7 +58,7 @@ function wireConversion(
     submit.disabled = true;
     form.setAttribute("aria-busy", "true");
     // This event boundary owns the async operation and handles rejected package calls.
-    void (async () => {
+    (async () => {
       try {
         const result = await operation(data);
         if (revision === currentRevision) panel.show(result);
@@ -79,7 +79,7 @@ function wireConversion(
         submit.disabled = false;
         form.setAttribute("aria-busy", "false");
       }
-    })();
+    })().catch(reportError);
   });
   const previewButton = document.querySelector<HTMLButtonElement>(`#${id}-result [data-preview]`);
   previewButton?.addEventListener("click", () => {

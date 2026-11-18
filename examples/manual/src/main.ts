@@ -281,19 +281,21 @@ fixtureSelect.append(examplesGroup);
 updateFixtureNavigation();
 
 fixtureSelect.addEventListener("change", () => updateFixtureNavigation());
-loadFixture.addEventListener("click", () => loadSelectedFixture());
-
-previousFixture.addEventListener("click", async () => {
-  await loadFixtureAtIndex(selectedFixtureIndex() - 1);
+loadFixture.addEventListener("click", () => {
+  loadSelectedFixture().catch(reportError);
 });
 
-nextFixture.addEventListener("click", async () => {
-  await loadFixtureAtIndex(selectedFixtureIndex() + 1);
+previousFixture.addEventListener("click", () => {
+  loadFixtureAtIndex(selectedFixtureIndex() - 1).catch(reportError);
 });
 
-loadXml.addEventListener("click", async () => {
+nextFixture.addEventListener("click", () => {
+  loadFixtureAtIndex(selectedFixtureIndex() + 1).catch(reportError);
+});
+
+loadXml.addEventListener("click", () => {
   xmlLoader.open = true;
-  await player.loadXml(xmlInput.value);
+  player.loadXml(xmlInput.value).catch(reportError);
 });
 
 pnpForm.addEventListener("submit", (event) => {
@@ -315,29 +317,29 @@ debugSuspend.addEventListener("click", () => player.suspend());
 debugEnd.addEventListener("click", () => player.endAttempt());
 debugReset.addEventListener("click", () => player.reset());
 
-fileInput.addEventListener("change", async () => {
+fileInput.addEventListener("change", () => {
   packageLoader.open = true;
-  await loadLocalFiles(fileInput.files);
+  loadLocalFiles(fileInput.files).catch(reportError);
 });
 
-localFiles.addEventListener("change", async () => {
+localFiles.addEventListener("change", () => {
   packageLoader.open = true;
   selectedFileIndex = Number(localFiles.value);
-  await loadSelectedLocalFile();
+  loadSelectedLocalFile().catch(reportError);
 });
 
-previousFile.addEventListener("click", async () => {
+previousFile.addEventListener("click", () => {
   packageLoader.open = true;
   if (loadedFiles.length === 0) return;
   selectedFileIndex = Math.max(0, selectedFileIndex - 1);
-  await loadSelectedLocalFile();
+  loadSelectedLocalFile().catch(reportError);
 });
 
-nextFile.addEventListener("click", async () => {
+nextFile.addEventListener("click", () => {
   packageLoader.open = true;
   if (loadedFiles.length === 0) return;
   selectedFileIndex = Math.min(loadedFiles.length - 1, selectedFileIndex + 1);
-  await loadSelectedLocalFile();
+  loadSelectedLocalFile().catch(reportError);
 });
 
 for (const eventName of [
@@ -384,7 +386,7 @@ for (const eventName of [
   });
 }
 
-void loadSelectedFixture();
+loadSelectedFixture().catch(reportError);
 
 function categoryLabel(category: (typeof canonicalFixtures)[number]["category"]): string {
   if (category === "processing") return "Processing references";

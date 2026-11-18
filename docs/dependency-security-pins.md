@@ -45,3 +45,27 @@ remain enforced.
 Remove the exception and update the pin and dependency allowlist when a patched
 release becomes available. Review the exception when changing Vite or Vitest,
 accepting untrusted glob patterns, or adding published runtime dependencies.
+
+## Type-aware promise checks
+
+Oxlint 1.94.0 uses `tsrs` 0.25.0-ts7.1.0-beta in place of `oxlint-tsgolint`.
+This Oxlint version supports [tsrs backend discovery](https://github.com/oxc-project/tsrs#type-aware-lint).
+Oxlint is MIT licensed; tsrs and its native packages are Apache-2.0 licensed.
+The dependency allowlist and exact release-age exceptions record this cohort.
+Future versions remain subject to the normal age policy. Core and CLI gain no runtime dependencies.
+
+The existing TypeScript 6.0.3 build and full compiler checks remain independent.
+Packages, browser tests, and manual examples enforce `await-thenable`,
+`no-floating-promises` with `ignoreVoid: false`, `no-misused-promises`,
+`return-await` in `error-handling-correctness-only` mode, and
+`prefer-promise-reject-errors`. A bare `void` does not establish promise ownership.
+
+Features retain their expected-error feedback. Unexpected drawing and demo failures
+use the browser's [native error-reporting channel](https://html.spec.whatwg.org/multipage/webappapis.html#dom-reporterror).
+The drawing regression checks this channel through a real renderer callback.
+Removing its rejection handler changes the observed event to an unhandled rejection
+and fails the assertion.
+
+When upgrading tsrs, check promise-rule coverage across packages, tests, examples,
+and scripts. Keep `pnpm typecheck`, `pnpm verify`, and the browser matrix in
+`pnpm release:check`; lint coverage does not replace them.

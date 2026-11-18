@@ -1,3 +1,4 @@
+import { parseQtiXml } from "../../packages/core/src/index.js";
 import { interactionFixtures } from "../../packages/fixtures/src/index.js";
 import { expect, test } from "@playwright/test";
 import {
@@ -357,6 +358,60 @@ test.describe("player graphic interactions", () => {
     await expectPointResponse(page, "240 88");
     await expect(marker).toHaveAttribute("data-placed", "true");
     await expect(placementStatus).toContainText(/Object positioned at 240 8[78]/);
+  });
+
+  test("reports rejected drawing callbacks through the browser error channel", async ({ page }) => {
+    await page.goto("/");
+    await loadFixture(page, "drawing");
+    const fixture = interactionFixtures.find((item) => item.interactionType === "drawing");
+    if (!fixture) throw new Error("Missing drawing fixture.");
+    const parsed = parseQtiXml(fixture.xml);
+    if (!parsed.ok || !parsed.document) throw new Error("Invalid drawing fixture.");
+    const interaction = parsed.document.item.interactions[0];
+    if (!interaction) throw new Error("Missing drawing interaction.");
+    const errors: string[] = [];
+    page.on("pageerror", (cause) => errors.push(cause.message));
+    await page.evaluate(
+      async ({ interaction: drawingInteraction, sourceRoot }) => {
+        const { renderDrawingResponse } = await import(
+          /* @vite-ignore */ `${sourceRoot}/interactions/drawing-interaction.ts`
+        );
+        const { defaultPlayerMessageResolver } = await import(
+          /* @vite-ignore */ `${sourceRoot}/player-message-resolver.ts`
+        );
+        const outcome = document.createElement("output");
+        outcome.id = "drawing-error-channel";
+        window.addEventListener("error", (event) => {
+          if (
+            event.error instanceof Error &&
+            event.error.message === "Drawing host callback failed"
+          )
+            outcome.textContent = "error";
+        });
+        window.addEventListener("unhandledrejection", () => {
+          outcome.textContent = "unhandledrejection";
+        });
+        const drawing = renderDrawingResponse(
+          drawingInteraction,
+          () => {
+            throw new Error("Drawing host callback failed");
+          },
+          null,
+          defaultPlayerMessageResolver,
+        );
+        document.body.replaceChildren(drawing, outcome);
+      },
+      { interaction, sourceRoot: `/@fs${process.cwd()}/packages/player/src` },
+    );
+    const surface = page.locator(".qti3-drawing-surface");
+    const box = await surface.boundingBox();
+    if (!box) throw new Error("Missing drawing surface.");
+    await page.mouse.move(box.x + 10, box.y + 10);
+    await page.mouse.down();
+    await page.mouse.move(box.x + 60, box.y + 30);
+    await page.mouse.up();
+    await expect(page.locator("#drawing-error-channel")).toHaveText("error");
+    expect(errors).toEqual(["Drawing host callback failed"]);
   });
 
   test("captures drawing responses as file data URLs", async ({ page }) => {

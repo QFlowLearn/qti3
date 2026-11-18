@@ -38,7 +38,7 @@ let selectedIndex = 0;
 let currentXml = "";
 let currentExample: ExampleEntry | undefined;
 
-void initialize();
+initialize().catch(showLoadError);
 
 async function initialize(): Promise<void> {
   const payload = await fetchJson<ExampleIndexPayload>("/__1edtech/index.json");
@@ -65,27 +65,27 @@ async function initialize(): Promise<void> {
       );
     });
     renderExamples();
-    void loadAt(0);
+    loadAt(0).catch(showLoadError);
   });
 
   examplesSelect.addEventListener("change", () => {
-    void loadAt(Number(examplesSelect.value));
+    loadAt(Number(examplesSelect.value)).catch(showLoadError);
   });
 
   previous.addEventListener("click", () => {
-    void loadAt(selectedIndex - 1);
+    loadAt(selectedIndex - 1).catch(showLoadError);
   });
 
   next.addEventListener("click", () => {
-    void loadAt(selectedIndex + 1);
+    loadAt(selectedIndex + 1).catch(showLoadError);
   });
 
   reload.addEventListener("click", () => {
-    void loadXml(xmlInput.value);
+    loadXml(xmlInput.value).catch(showLoadError);
   });
 
   copyOriginal.addEventListener("click", () => {
-    void copyXml(currentXml, "Copied original XML");
+    copyXml(currentXml, "Copied original XML").catch(showLoadError);
   });
 
   player.addEventListener("qti-ready", (event) => {
@@ -150,8 +150,12 @@ function appendEvent(name: string, detail: unknown): void {
 }
 
 async function copyXml(xml: string, message: string): Promise<void> {
-  await navigator.clipboard.writeText(xml);
-  status.textContent = message;
+  try {
+    await navigator.clipboard.writeText(xml);
+    status.textContent = message;
+  } catch {
+    status.textContent = "Clipboard access is unavailable. Copy the XML from the text field.";
+  }
 }
 
 function resolveAssetUrl(sourcePath: string, url: string): string {
@@ -180,4 +184,8 @@ function requiredElement(selector: string): Element {
   const element = document.querySelector(selector);
   if (!element) throw new Error(`Missing ${selector}`);
   return element;
+}
+
+function showLoadError(): void {
+  status.textContent = "The example could not be loaded. Try again.";
 }

@@ -37,7 +37,7 @@ export class ResultPanel {
     this.report = requiredElement(root, "[data-report]", HTMLDetailsElement);
     this.reportText = requiredElement(this.report, "pre", HTMLElement);
     this.copy.addEventListener("click", () => {
-      void this.copyXml();
+      this.copyXml().catch(reportError);
     });
     this.download.addEventListener("click", () => this.downloadXml());
   }

@@ -39,34 +39,34 @@ let messages: readonly QtiDiagnostic[] = [];
 let busy = false;
 
 input.addEventListener("change", () => {
-  void run(importFile);
+  run(importFile).catch(reportError);
 });
 packages.addEventListener("change", () => {
-  void run(() => openPackage(packages.value));
+  run(() => openPackage(packages.value)).catch(reportError);
 });
 items.addEventListener("change", () => {
-  void run(renderItem);
+  run(renderItem).catch(reportError);
 });
 deleteButton.addEventListener("click", () => {
-  void run(removeSelectedPackage, input);
+  run(removeSelectedPackage, input).catch(reportError);
 });
 submitButton.addEventListener("click", () => {
-  void run(() => {
+  run(() => {
     const result = player.scoreAttempt();
     if (result?.diagnostics.some((diagnostic) => diagnostic.severity === "error"))
       showScore(result);
-  });
+  }).catch(reportError);
 });
 resetButton.addEventListener("click", () => {
-  void run(() => player.reset(), submitButton);
+  run(() => player.reset(), submitButton).catch(reportError);
 });
-void run(async () => {
+run(async () => {
   if (await refreshList())
     status.textContent =
       packages.options.length > 1
         ? "Select a saved package to reopen it."
         : "No saved packages. Import a QTI ZIP to begin.";
-});
+}).catch(reportError);
 
 async function importFile(): Promise<void> {
   const file = input.files?.[0];

@@ -66,19 +66,19 @@ for (const control of [interactionFilter, familyFilter, supportFilter, caseSearc
   });
 }
 
-copyXml.addEventListener("click", async () => {
-  await copyText(selectedXml, "Item XML copied.");
+copyXml.addEventListener("click", () => {
+  copyText(selectedXml, "Item XML copied.").catch(reportError);
 });
 
-copyTest.addEventListener("click", async () => {
-  await copyText(
+copyTest.addEventListener("click", () => {
+  copyText(
     `shared vocabulary matrix › ${selectedEntry?.id ?? ""}`,
     "Playwright test name copied.",
-  );
+  ).catch(reportError);
 });
 
 renderCaseList();
-void selectCase(selectedEntry?.id, false);
+selectCase(selectedEntry?.id, false).catch(reportError);
 
 async function selectCase(caseId: string | undefined, pushUrl: boolean): Promise<void> {
   if (!caseId) return;
@@ -139,7 +139,7 @@ function renderCaseList(): void {
     if (next && next.id !== selectedEntry?.id) {
       selectedEntry = next;
       updateUrl(next.id, false);
-      void scheduleSelectedCaseLoad(next);
+      scheduleSelectedCaseLoad(next).catch(reportError);
     }
   }
 
@@ -162,7 +162,7 @@ function renderCaseList(): void {
         selectedEntry = item.entry;
         updateUrl(item.entry.id, true);
         renderCaseList();
-        void scheduleSelectedCaseLoad(item.entry);
+        scheduleSelectedCaseLoad(item.entry).catch(reportError);
       });
       return button;
     }),
@@ -301,8 +301,12 @@ function staticSiteRootUrl(): URL {
 }
 
 async function copyText(text: string, successMessage: string): Promise<void> {
-  await navigator.clipboard.writeText(text);
-  copyStatus.textContent = successMessage;
+  try {
+    await navigator.clipboard.writeText(text);
+    copyStatus.textContent = successMessage;
+  } catch {
+    copyStatus.textContent = "Clipboard access is unavailable. Copy the text manually.";
+  }
 }
 
 function entryFromUrl(): SharedVocabularyManifestEntry | undefined {
