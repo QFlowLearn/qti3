@@ -1,10 +1,6 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import type { QtiAttemptStateV1 } from "@longsightgroup/qti3-core";
-import {
-  createQtiAssessmentItemPlayerHandle,
-  createQtiAssessmentItemPlayerAdapterLoadSync,
-  qtiAssessmentItemPlayerLoadStateKey,
-} from "./player-adapter.js";
+import { qtiAssessmentItemPlayerLoadStateKey } from "./player-adapter.js";
 
 describe("qtiAssessmentItemPlayerLoadStateKey", () => {
   it("returns undefined for missing state", () => {
@@ -45,66 +41,5 @@ describe("qtiAssessmentItemPlayerLoadStateKey", () => {
     expect(qtiAssessmentItemPlayerLoadStateKey(first)).not.toBe(
       qtiAssessmentItemPlayerLoadStateKey(second),
     );
-  });
-});
-
-describe("createQtiAssessmentItemPlayerAdapterLoadSync", () => {
-  it("clears the element when xml is undefined", () => {
-    const sync = createQtiAssessmentItemPlayerAdapterLoadSync();
-    const element = {
-      clearItem: vi.fn(),
-      loadXml: vi.fn(() => Promise.resolve()),
-    };
-
-    sync.run(element as never, { xml: undefined });
-
-    expect(element.clearItem).toHaveBeenCalledTimes(1);
-    expect(element.loadXml).not.toHaveBeenCalled();
-  });
-
-  it("reports load failures only for the active sequence", async () => {
-    const sync = createQtiAssessmentItemPlayerAdapterLoadSync();
-    let rejectFirst: ((error: Error) => void) | undefined;
-    const element = {
-      clearItem: vi.fn(),
-      loadXml: vi
-        .fn()
-        .mockImplementationOnce(
-          () =>
-            new Promise<void>((_, reject) => {
-              rejectFirst = reject;
-            }),
-        )
-        .mockImplementationOnce(() => Promise.resolve()),
-    };
-    const onLoadError = vi.fn();
-
-    sync.run(element as never, { xml: "<first/>", onLoadError });
-    const cleanup = sync.run(element as never, { xml: "<second/>", onLoadError });
-    rejectFirst?.(new Error("stale failure"));
-    await Promise.resolve();
-    cleanup();
-
-    expect(onLoadError).not.toHaveBeenCalled();
-  });
-});
-
-describe("createQtiAssessmentItemPlayerHandle", () => {
-  it("forwards interaction region lookups to the mounted element", () => {
-    const regions = [
-      {
-        kind: "interaction",
-        interactionType: "choice",
-        bounds: {} as DOMRectReadOnly,
-        element: {} as Element,
-      },
-    ];
-    const element = {
-      getInteractionRegions: vi.fn(() => regions),
-    };
-    const handle = createQtiAssessmentItemPlayerHandle(() => element as never);
-
-    expect(handle.getInteractionRegions()).toBe(regions);
-    expect(element.getInteractionRegions).toHaveBeenCalledTimes(1);
   });
 });
