@@ -50,6 +50,7 @@ function renderSelectedContent(
 
 function selectedTriggerLabel(interaction: QtiInteraction, option: InlineChoiceOption | undefined) {
   if (option?.choice) return `${interactionLabel(interaction)}: ${option.choice.text}`;
+  if (option) return `${interactionLabel(interaction)}: ${option.text}`;
   return interactionLabel(interaction);
 }
 
