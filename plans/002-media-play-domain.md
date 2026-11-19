@@ -329,7 +329,7 @@ pnpm exec vitest run packages/core/src/media-definition.test.ts packages/core/sr
 4. Delete `object-asset.ts` once nothing imports it (`rg renderObjectAsset packages` must be empty).
 5. At the top of `renderMediaResponse`, parse the definition. If `!ok`, return `errorView(...)` with
    class `qti3-media-invalid`, same wording pattern as slider (`Slider interaction (RESPONSE) has
-invalid authored attributes.` → media equivalent). Do not render an operable `<audio>`/`<video>`.
+   invalid authored attributes.` → media equivalent). Do not render an operable `<audio>`/`<video>`.
 6. Delete local `parseBooleanAttribute`. Set:
 
 ```ts

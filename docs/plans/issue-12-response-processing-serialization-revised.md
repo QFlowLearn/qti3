@@ -265,7 +265,7 @@ pnpm verify
 - Keep serialization out of `parser-processing.ts`; new module only.
 - Internal helpers: `serializeResponseRule`, `serializeResponseCondition`,
   `serializeExpression`, plus a tiny element-tree printer (`{ name, attributes, children,
-text }` → indented string). No generic XML builder, no new dependencies.
+  text }` → indented string). No generic XML builder, no new dependencies.
 - Keep `serializeExpression` free of response-processing-specific assumptions so a future
   template-processing serializer can reuse it (mirroring how the parser shares
   `parseExpression`).

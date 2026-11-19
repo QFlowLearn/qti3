@@ -10,11 +10,11 @@ jobs:
     name: Minimum Node 22 (full verification)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
+      - uses: actions/checkout@v7.0.1
+      - uses: pnpm/action-setup@v6.1.1
         with:
-          version: 10.30.1
-      - uses: actions/setup-node@v6
+          version: 12.21.0
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: 22
           cache: pnpm
@@ -27,7 +27,7 @@ jobs:
         run: pnpm release:check
       - name: Upload Playwright failure artifacts
         if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: playwright-failure-artifacts
           path: |
@@ -37,16 +37,19 @@ jobs:
           retention-days: 7
 
   current-node:
-    name: Current Node 24 (compatibility)
+    name: Node ${{ matrix.node }} (compatibility)
+    strategy:
+      matrix:
+        node: [24, 26.13.1]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
+      - uses: actions/checkout@v7.0.1
+      - uses: pnpm/action-setup@v6.1.1
         with:
-          version: 10.30.1
-      - uses: actions/setup-node@v6
+          version: 12.21.0
+      - uses: actions/setup-node@v7.1.0
         with:
-          node-version: 24
+          node-version: ${{ matrix.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck

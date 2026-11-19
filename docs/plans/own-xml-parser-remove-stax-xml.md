@@ -51,7 +51,7 @@ Driven by what the codebase actually consumes (`XmlNode` fields, `parser.ts`,
 | Entities              | See "Entity Decoding" below                                                                                                                                                                                                |
 | Source info           | `source` (line/column/offset/path), `endSource`, and `sourceRange` (`startOffset`, `startTagEndOffset`, `endOffset`) populated natively during the single pass                                                             |
 | Errors                | Collected into `errors: Error[]`; `parser.ts` already treats any error as fatal (`xml.parse` diagnostic, `ok: false`)                                                                                                      |
-| Encoding              | Input is a JS string (decoding already happened); strip a leading BOM (`﻿`)                                                                                                                                                |
+| Encoding              | Input is a JS string (decoding already happened); strip a leading BOM (`﻿`)                                                                                                                                                 |
 
 ## Entity Decoding
 

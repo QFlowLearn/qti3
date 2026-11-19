@@ -75,13 +75,11 @@ export function choiceVerticalRlStylesheetAssertions(
   className: string | string[] = "qti-writing-orientation-vertical-rl",
 ): SharedVocabularyAssertion[] {
   return [
-    ...classNames(className).map(
-      (name): SharedVocabularyAssertion => ({
-        type: "class-preserved",
-        selector: choice,
-        className: name,
-      }),
-    ),
+    ...classNames(className).map((name): SharedVocabularyAssertion => ({
+      type: "class-preserved",
+      selector: choice,
+      className: name,
+    })),
     {
       type: "computed-style",
       selector: choiceList,
@@ -122,13 +120,11 @@ export function choiceStackingAssertions(
   orientation = "horizontal",
 ): SharedVocabularyAssertion[] {
   return [
-    ...classNames(className).map(
-      (name): SharedVocabularyAssertion => ({
-        type: "class-preserved",
-        selector: choice,
-        className: name,
-      }),
-    ),
+    ...classNames(className).map((name): SharedVocabularyAssertion => ({
+      type: "class-preserved",
+      selector: choice,
+      className: name,
+    })),
     {
       type: "attribute",
       selector: `${choice} .qti3-choice-list`,
@@ -196,21 +192,17 @@ export function labelAssertions(
   expected: string[],
 ): SharedVocabularyAssertion[] {
   return [
-    ...classNames(className).map(
-      (name): SharedVocabularyAssertion => ({
-        type: "class-preserved",
-        selector: rootSelector,
-        className: name,
-      }),
-    ),
+    ...classNames(className).map((name): SharedVocabularyAssertion => ({
+      type: "class-preserved",
+      selector: rootSelector,
+      className: name,
+    })),
     { type: "element-count", selector: labelSelector, count: expected.length },
-    ...expected.map(
-      (value, index): SharedVocabularyAssertion => ({
-        type: "text",
-        selector: labelSelectors[index] ?? labelSelector,
-        value,
-      }),
-    ),
+    ...expected.map((value, index): SharedVocabularyAssertion => ({
+      type: "text",
+      selector: labelSelectors[index] ?? labelSelector,
+      value,
+    })),
   ];
 }
 

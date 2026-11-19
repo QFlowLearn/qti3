@@ -54,9 +54,9 @@ export type QtiAssessmentItemPlayerAdapterEventCallback<
 > = (detail: QtiAssessmentItemPlayerEventDetailMap[T]) => void;
 
 export type QtiAssessmentItemPlayerAdapterEventHandlerProps = {
-  [K in (typeof qtiAssessmentItemPlayerAdapterEventEntries)[number] as K[1]]?: QtiAssessmentItemPlayerAdapterEventCallback<
-    K[0]
-  >;
+  [
+    K in (typeof qtiAssessmentItemPlayerAdapterEventEntries)[number] as K[1]
+  ]?: QtiAssessmentItemPlayerAdapterEventCallback<K[0]>;
 };
 
 export interface QtiAssessmentItemPlayerAdapterProps extends QtiAssessmentItemPlayerAdapterEventHandlerProps {

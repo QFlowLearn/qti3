@@ -34,9 +34,8 @@ export default defineConfig({
       "@longsightgroup/qti3-player": resolve(repoRoot, "packages/player/src/index.ts"),
     },
   },
-  esbuild: {
-    jsx: "automatic",
-    jsxImportSource: "react",
+  oxc: {
+    jsx: { runtime: "automatic", importSource: "react" },
   },
   build: {
     rolldownOptions: {

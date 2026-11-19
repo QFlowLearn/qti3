@@ -37,7 +37,7 @@ qti3 run-fixtures
   emits the complete scoring result, including diagnostics, state, responses, outcomes, and score.
 - `score-correct <item.xml>` scores an item using its authored correct response.
 - `prepare-delivery <item.xml> [--mode static|server-materialized-adaptive] [--state <state.json>]
-[--out <candidate.xml>]` prepares candidate-safe XML. Static mode is the default and rejects a
+  [--out <candidate.xml>]` prepares candidate-safe XML. Static mode is the default and rejects a
   state file. Adaptive mode requires a state object containing `outcomes` and optional
   `templateValues`. Without `--out`, the command emits the complete preparation result; with
   `--out`, it writes XML only after successful preparation and emits a JSON summary.

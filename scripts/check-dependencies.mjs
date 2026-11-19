@@ -154,7 +154,10 @@ function lockfilePackageKeys(lockfile) {
       continue;
     }
     if (!inPackages) continue;
-    if (/^[A-Za-z]/.test(line)) break;
+    if (/^\S/.test(line)) {
+      inPackages = false;
+      continue;
+    }
     const match = line.match(/^  ('[^']+'|[^\s].*):$/);
     if (match) keys.push(match[1].replace(/^'|'$/g, ""));
   }

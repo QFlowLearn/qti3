@@ -19,6 +19,7 @@
     { "path": "./packages/cli" },
     { "path": "./packages/cli/tsconfig.test.json" },
     { "path": "./examples/manual/tsconfig.convert.json" },
-    { "path": "./examples/manual/tsconfig.library.json" }
+    { "path": "./examples/manual/tsconfig.library.json" },
+    { "path": "./tests/tooling" }
   ]
 }

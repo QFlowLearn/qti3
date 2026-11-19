@@ -475,7 +475,7 @@ classes, it controls visual width without imposing a response-length limit.
 
 ## Tooling choices
 
-- TypeScript 6+
+- TypeScript 7
 - pnpm
 - Vite 8+
 - Vitest
@@ -483,6 +483,10 @@ classes, it controls visual width without imposing a response-length limit.
 - axe-core
 - oxfmt
 - oxlint
+
+Use Node 26.13.1 from `.node-version` and pnpm 12.21.0 for development. Repository tools require
+Node 22.12 or newer. CI keeps full verification on Node 22 and checks compatibility on Node 24
+and Node 26. The published packages retain their Node 22+ runtime target.
 
 ## Checks
 

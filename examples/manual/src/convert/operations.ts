@@ -64,9 +64,10 @@ export async function migrateItem(xml: string): Promise<ConversionResult> {
     for (const entry of item.diagnostics) {
       diagnostics.push(
         entry,
-        ...(entry.writerDiagnostics ?? []).map(
-          (diagnostic): ConversionDiagnostic => ({ ...diagnostic, severity: "error" }),
-        ),
+        ...(entry.writerDiagnostics ?? []).map((diagnostic): ConversionDiagnostic => ({
+          ...diagnostic,
+          severity: "error",
+        })),
       );
     }
   }

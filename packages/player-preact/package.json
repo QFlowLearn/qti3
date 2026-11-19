@@ -53,7 +53,7 @@
     "@longsightgroup/qti3-player": "workspace:*"
   },
   "devDependencies": {
-    "preact": "10.29.2"
+    "preact": "10.29.8"
   },
   "peerDependencies": {
     "preact": ">=10.26 <11"

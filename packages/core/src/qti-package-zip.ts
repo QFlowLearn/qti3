@@ -187,7 +187,7 @@ export function decodeUtf8(bytes: Uint8Array): string {
     bytes[0] === 0xef && bytes[1] === 0xbb && bytes[2] === 0xbf ? bytes.subarray(3) : bytes;
   let text = "";
 
-  for (let index = 0; index < input.length; ) {
+  for (let index = 0; index < input.length;) {
     const first = input[index];
     if (first === undefined) break;
     if (first < 0x80) {
@@ -668,7 +668,7 @@ function isUtf8Continuation(value: number | undefined): value is number {
 }
 
 function isValidUtf8(bytes: Uint8Array): boolean {
-  for (let index = 0; index < bytes.length; ) {
+  for (let index = 0; index < bytes.length;) {
     const byte = bytes[index];
     if (byte === undefined) return false;
     if (byte < 0x80) {

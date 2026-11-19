@@ -244,13 +244,11 @@ export function mapHottext(interaction: XmlElement, context: Qti2Context): Qti3A
   const responseIdentifier = responseIdentifierFor(interaction);
   const cardinality = attr(context.responseDeclMap.get(responseIdentifier), "cardinality");
   const hottexts = findAllDescendantsByLocalName(interaction, "hottext");
-  const choices = hottexts.map(
-    (hottext, index): Qti3HottextChoice => ({
-      identifier: normalizeIdentifier(attr(hottext, "identifier"), `H${index + 1}`),
-      contentHtml: trusted(serializeQti2ContentChildren(hottext)),
-      text: textOf(hottext) || undefined,
-    }),
-  );
+  const choices = hottexts.map((hottext, index): Qti3HottextChoice => ({
+    identifier: normalizeIdentifier(attr(hottext, "identifier"), `H${index + 1}`),
+    contentHtml: trusted(serializeQti2ContentChildren(hottext)),
+    text: textOf(hottext) || undefined,
+  }));
   return {
     interactionType: "hottext",
     responseCardinality: cardinality === "multiple" ? "multiple" : "single",

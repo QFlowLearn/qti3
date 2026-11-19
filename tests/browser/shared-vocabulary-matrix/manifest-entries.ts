@@ -503,14 +503,12 @@ const interactionManifestEntries: SharedVocabularyManifestEntry[] = [
     "gapMatch",
     inputWidths.map((width) => `qti-input-width-${width}`),
     "full",
-    inputWidths.map(
-      (width): SharedVocabularyAssertion => ({
-        type: "attribute",
-        selector: `${player} [data-gap-identifier="G${width}"]`,
-        name: "data-qti-gap-input-width",
-        value: String(width),
-      }),
-    ),
+    inputWidths.map((width): SharedVocabularyAssertion => ({
+      type: "attribute",
+      selector: `${player} [data-gap-identifier="G${width}"]`,
+      name: "data-qti-gap-input-width",
+      value: String(width),
+    })),
   ),
   entry(
     "interaction-input-width-standalone",
