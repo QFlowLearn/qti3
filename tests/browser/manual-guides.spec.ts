@@ -3,6 +3,11 @@ import { installAxe } from "./axe-helpers.js";
 
 const guides = [
   {
+    slug: "qflowlearn-integration",
+    title: "How QFlowLearn embeds qti3 for authoring preview",
+    code: "qti-ready",
+  },
+  {
     slug: "render-qti-react",
     title: "Render a QTI 3 question in React",
     code: "QtiAssessmentItemPlayer",

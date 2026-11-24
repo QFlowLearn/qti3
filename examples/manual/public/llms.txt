@@ -13,6 +13,8 @@
 
 ## Integration guides
 
+- [QFlowLearn integration walkthrough](https://qflowlearn.github.io/qti3/guides/qflowlearn-integration.html): Public source, host responsibilities, and a runnable demonstration.
+
 - [render qti react](https://qflowlearn.github.io/qti3/guides/render-qti-react.html)
 - [score qti node](https://qflowlearn.github.io/qti3/guides/score-qti-node.html)
 - [migrate qti2](https://qflowlearn.github.io/qti3/guides/migrate-qti2.html)

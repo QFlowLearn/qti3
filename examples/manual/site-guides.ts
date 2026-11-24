@@ -4,6 +4,12 @@ import { Marked, Renderer } from "marked";
 
 export const siteGuides = [
   {
+    slug: "qflowlearn-integration",
+    title: "How QFlowLearn embeds qti3 for authoring preview",
+    description:
+      "Follow the public QFlowLearn host integration and try the same player boundary in a runnable starter.",
+  },
+  {
     slug: "render-qti-react",
     title: "Render a QTI 3 question in React",
     description:

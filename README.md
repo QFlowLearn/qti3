@@ -44,6 +44,9 @@ see [candidate view](#candidate-view).
 [Run the complete React starter](examples/react-starter/README.md) to render, score, save, and
 restore an attempt with two commands after cloning. [Try it live](https://qflowlearn.github.io/qti3/starter/).
 
+[See how QFlowLearn embeds qti3](https://qflowlearn.github.io/qti3/guides/qflowlearn-integration.html)
+for an implementation walkthrough with public source and a runnable demonstration.
+
 ## Build your first integration
 
 | Your task                         | Guide                                                                                              | Runnable example                               |
