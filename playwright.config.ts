@@ -27,11 +27,18 @@ export default defineConfig({
     screenshot: "only-on-failure",
     video: "on-first-retry",
   },
-  webServer: {
-    command: "pnpm exec vite --host 127.0.0.1 --port 4179 examples/manual",
-    port: 4179,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: "pnpm exec vite --host 127.0.0.1 --port 4179 examples/manual",
+      port: 4179,
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: "pnpm --dir examples/react-starter dev --port 4188 --strictPort",
+      url: "http://127.0.0.1:4188",
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
   projects: [
     {
       name: "chromium",

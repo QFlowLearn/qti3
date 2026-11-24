@@ -9,6 +9,8 @@
 - [Source repository](https://github.com/QFlowLearn/qti3): TypeScript packages, fixtures, tests, examples, issues, and release history.
 - [npm packages](https://www.npmjs.com/org/longsightgroup): Published packages under the `@longsightgroup` scope.
 
+- [React starter](https://qflowlearn.github.io/qti3/starter/): Render, score, save, and restore a synthetic item with the published React adapter.
+
 ## Integration guides
 
 - [render qti react](https://qflowlearn.github.io/qti3/guides/render-qti-react.html)

@@ -3,6 +3,22 @@
 Embed a multiple-choice question, capture its response, and show a local preview score.
 The React adapter loads XML into the native qti3 Web Component and forwards its events.
 
+## Run the complete starter
+
+[Try the live React starter](https://qflowlearn.github.io/qti3/starter/) to render,
+score, save, and restore an attempt. To run it locally:
+
+```sh
+git clone --depth 1 https://github.com/QFlowLearn/qti3.git
+cd qti3/examples/react-starter
+pnpm install
+pnpm dev
+```
+
+The starter uses published packages, so no core build is required. You can copy
+`examples/react-starter` into your own project. See its
+[README](../../examples/react-starter/README.md) for expected scores and saved-state behavior.
+
 ## Run the repository example
 
 From the repository root, use Node.js 22+ and pnpm:

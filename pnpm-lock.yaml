@@ -287,6 +287,40 @@ importers:
         specifier: 8.3.8
         version: 8.3.8(@types/node@22.20.5)
 
+  examples/react-starter:
+    dependencies:
+      '@longsightgroup/qti3-core':
+        specifier: 0.13.4
+        version: 0.13.4
+      '@longsightgroup/qti3-fixtures':
+        specifier: 0.13.4
+        version: 0.13.4
+      '@longsightgroup/qti3-player':
+        specifier: 0.13.4
+        version: 0.13.4
+      '@longsightgroup/qti3-player-react':
+        specifier: 0.13.4
+        version: 0.13.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      react:
+        specifier: 19.3.1
+        version: 19.3.1
+      react-dom:
+        specifier: 19.3.1
+        version: 19.3.1(react@19.3.1)
+    devDependencies:
+      '@types/react':
+        specifier: 19.3.0
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: 19.3.0
+        version: 19.3.0(@types/react@19.3.0)
+      typescript:
+        specifier: 7.0.2
+        version: 7.0.2
+      vite:
+        specifier: 8.3.8
+        version: 8.3.8(@types/node@22.20.5)
+
   packages/a11y:
     dependencies:
       '@longsightgroup/qti3-core':
@@ -467,6 +501,21 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@longsightgroup/qti3-core@0.13.4':
+    resolution: {integrity: sha512-WclfRDVAO/ECGRqDsFYaEpg3zt/LGbFBRmODzuIWwxypkoDwaIFbHB4YDtmFJxRpatBS0CCNzR6k+lITO1eRWQ==}
+
+  '@longsightgroup/qti3-fixtures@0.13.4':
+    resolution: {integrity: sha512-ZpD/GE52MBfMhvls0CsBD7pemQhZa8frAABYTsOIgIxDStLBfs+dg9itAbUqai7qg62QzQVIfqGsttBU1LY6jA==}
+
+  '@longsightgroup/qti3-player-react@0.13.4':
+    resolution: {integrity: sha512-f5v/9dt2XMrK1yG2pNFtUDbZLaY/yVutao/B0Eh1yJyP2CgznFLAwsoYOjUM4CePdH+uiGVxePnZah+GhlUJuQ==}
+    peerDependencies:
+      react: '>=18.2 <20'
+      react-dom: '>=18.2 <20'
+
+  '@longsightgroup/qti3-player@0.13.4':
+    resolution: {integrity: sha512-GwoAjrKRx+6Cdv4YSi3yw+xrKMmCLuaQeW6zOzCQcULBl5cC6x7aC1ALyeX0QP5jXtumlgok+dR1qo0pZpECKw==}
 
   '@napi-rs/wasm-runtime@1.2.6':
     resolution: {integrity: sha512-mRyDmEw9/fCDXCGfL1sbgIw/GUK0PVxRW4YwgPN61F3LQ+fSyoBFarJVzgGyhF6kRzEQZ0FejDqm4WLXSeqQmw==}
@@ -1563,6 +1612,22 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@longsightgroup/qti3-core@0.13.4': {}
+
+  '@longsightgroup/qti3-fixtures@0.13.4':
+    dependencies:
+      '@longsightgroup/qti3-core': 0.13.4
+
+  '@longsightgroup/qti3-player-react@0.13.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
+    dependencies:
+      '@longsightgroup/qti3-player': 0.13.4
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+
+  '@longsightgroup/qti3-player@0.13.4':
+    dependencies:
+      '@longsightgroup/qti3-core': 0.13.4
 
   '@napi-rs/wasm-runtime@1.2.6(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)':
     dependencies:

@@ -1,0 +1,30 @@
+{
+  "name": "qti3-react-starter",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@longsightgroup/qti3-core": "0.13.4",
+    "@longsightgroup/qti3-fixtures": "0.13.4",
+    "@longsightgroup/qti3-player": "0.13.4",
+    "@longsightgroup/qti3-player-react": "0.13.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "pnpm@12.21.0"
+}

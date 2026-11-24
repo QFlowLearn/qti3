@@ -41,6 +41,9 @@ with another bundler, pass the item XML as a string. This fixture includes an an
 local preview. For graded delivery, prepare candidate-safe XML and score on the server;
 see [candidate view](#candidate-view).
 
+[Run the complete React starter](examples/react-starter/README.md) to render, score, save, and
+restore an attempt with two commands after cloning. [Try it live](https://qflowlearn.github.io/qti3/starter/).
+
 ## Build your first integration
 
 | Your task                         | Guide                                                                                              | Runnable example                               |

@@ -31,7 +31,7 @@
     "prepare": "node scripts/install-git-hooks.mjs",
     "lint": "pnpm build && pnpm lint:raw",
     "lint:raw": "oxlint --deny-warnings packages examples tests scripts playwright.config.ts vitest.config.ts",
-    "typecheck": "tsc -b",
+    "typecheck": "tsc -b && pnpm --dir examples/react-starter exec tsc --noEmit",
     "test": "vitest run",
     "test:conformance": "vitest run packages/conformance",
     "test:external": "vitest run packages/conformance/src/external-qti.test.ts",
@@ -45,7 +45,7 @@
     "check:transcoder-xsd": "node scripts/prepare-qti-xsd.mjs && node scripts/check-transcoder-xsd.mjs",
     "check:test-xsd": "node scripts/check-test-xsd.mjs",
     "build": "node scripts/clean-package-dist.mjs && tsc -b",
-    "pages:build": "vite build examples/manual --base /qti3/ --outDir ../../dist/pages --emptyOutDir",
+    "pages:build": "vite build examples/manual --base /qti3/ --outDir ../../dist/pages --emptyOutDir && pnpm --dir examples/react-starter build --base /qti3/starter/ --outDir ../../dist/pages/starter",
     "dev": "vite --host 127.0.0.1 examples/manual",
     "dev:1edtech": "vite --host 127.0.0.1 examples/manual --open /1edtech.html",
     "dev:adapter-react": "vite --host 127.0.0.1 examples/manual --open /adapter-react.html",
@@ -56,7 +56,8 @@
     "certification:evidence": "node scripts/certification-evidence.mjs",
     "check:information-model": "node scripts/check-information-model.mjs",
     "test:semantic": "vitest run packages/fixtures/src/challenges.test.ts packages/core/src/test-execution-profile.test.ts packages/core/src/session-sequences.test.ts packages/core/src/challenge-items.test.ts packages/migrator/src/choice-semantic-matrix.test.ts packages/migrator/src/scoring-fidelity.test.ts",
-    "check:semantic-mutations": "node scripts/check-semantic-mutations.mjs"
+    "check:semantic-mutations": "node scripts/check-semantic-mutations.mjs",
+    "dev:starter": "pnpm --dir examples/react-starter dev"
   },
   "devDependencies": {
     "@interfere/landmines": "0.1.1",
