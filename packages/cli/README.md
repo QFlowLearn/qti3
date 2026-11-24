@@ -62,7 +62,7 @@ The response and adaptive-state JSON files are trusted server inputs. Do not pas
 outcomes or template values to these commands without validating them at the host trust boundary.
 
 See the main repository README for the support matrix and release notes:
-https://github.com/LongsightGroup/qti3
+https://github.com/QFlowLearn/qti3
 
 Package inspection and validation use core's `parseQtiPackageFromEntries` for ZIPs
 and expanded directories. Manifest resources and the registered assessment test

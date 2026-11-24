@@ -371,7 +371,7 @@ when the host already owns the authoritative outcomes and needs to prepare candi
 - Publish support metadata for current and deprecated item interactions.
 
 See the main repository README for the support matrix and release notes:
-https://github.com/LongsightGroup/qti3
+https://github.com/QFlowLearn/qti3
 
 ### Shared vocabulary authoring
 

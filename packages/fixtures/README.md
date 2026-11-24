@@ -40,7 +40,7 @@ These files are useful for browser harnesses, external validators, and fixture-b
 conformance tests that need real files instead of in-memory fixture objects.
 
 See the main repository README for the support matrix and release notes:
-https://github.com/LongsightGroup/qti3
+https://github.com/QFlowLearn/qti3
 
 ## Modal feedback examples
 

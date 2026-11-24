@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://longsightgroup.github.io/qti3/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://qflowlearn.github.io/qti3/</loc>
+    <lastmod>2026-11-24</lastmod>
   </url>
   <url>
-    <loc>https://longsightgroup.github.io/qti3/sv-gallery/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <loc>https://qflowlearn.github.io/qti3/integration.html</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://qflowlearn.github.io/qti3/convert.html</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://qflowlearn.github.io/qti3/library.html</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://qflowlearn.github.io/qti3/sv-gallery/</loc>
+    <lastmod>2026-11-24</lastmod>
   </url>
 </urlset>

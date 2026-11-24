@@ -113,7 +113,7 @@
   and [partial-credit and retry scenarios](tests/fixtures/challenges/README.md).
 - Add scoring rules and example answers for the ten manual challenges. Flight ordering
   reports the number of stages in the correct position; lab results report the earned badge.
-- Add a separate [integration guide](https://longsightgroup.github.io/qti3/integration.html)
+- Add a separate [integration guide](https://qflowlearn.github.io/qti3/integration.html)
   with player installation, XML loading, scoring, and links to core and framework adapters.
 
 ### Changed

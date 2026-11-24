@@ -6,7 +6,7 @@ The migrator checks whether its writer can preserve the source item's scoring.
 
 ## Try conversion in your browser
 
-Open the [item conversion demo](https://longsightgroup.github.io/qti3/convert.html),
+Open the [item conversion demo](https://qflowlearn.github.io/qti3/convert.html),
 choose migration, and load the QTI 2.1 example. Run the conversion and inspect the
 diagnostics, XML output, and preview. This demo handles individual items and keeps
 inputs in browser memory; it does not convert whole packages or bundle assets.
@@ -48,7 +48,7 @@ both migration-level and item-level diagnostics, requires exactly one item, and
 writes XML only if no error prevents conversion. If conversion fails, the process
 exits unsuccessfully; the redirected file can be empty and must not be imported.
 
-Load successful output into the [interactive manual](https://longsightgroup.github.io/qti3/)
+Load successful output into the [interactive manual](https://qflowlearn.github.io/qti3/)
 using **Paste QTI XML**. Choose Mars and score the attempt: expect `1`. Choose Venus
 and score again: expect `0`. Use the [Node scoring guide](score-qti-node.md) to
 check converted items without a browser.

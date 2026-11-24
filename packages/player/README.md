@@ -521,7 +521,7 @@ to sighted users. They remain available to assistive technology. Set
 pages when you want those messages visible on screen.
 
 See the main repository README for the support matrix and release notes:
-https://github.com/LongsightGroup/qti3
+https://github.com/QFlowLearn/qti3
 
 ## Scored-response policy
 

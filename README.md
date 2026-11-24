@@ -4,11 +4,11 @@ Render and score QTI 3 assessment items in your app. `qti3` provides a TypeScrip
 a native Web Component player, optional React and Preact adapters, and tools for migrating
 older QTI content. The core engine and CLI have zero third-party runtime dependencies.
 
-**[Try the live demo](https://longsightgroup.github.io/qti3/)** ·
-**[Use in your app](https://longsightgroup.github.io/qti3/integration.html)** ·
-**[Try item conversion](https://longsightgroup.github.io/qti3/convert.html)**
+**[Try the live demo](https://qflowlearn.github.io/qti3/)** ·
+**[Use in your app](https://qflowlearn.github.io/qti3/integration.html)** ·
+**[Try item conversion](https://qflowlearn.github.io/qti3/convert.html)**
 
-<a href="https://longsightgroup.github.io/qti3/"><img src="docs/images/player-preview.png" alt="The qti3 player showing a multiple-choice item and its score" width="560"></a>
+<a href="https://qflowlearn.github.io/qti3/"><img src="docs/images/player-preview.png" alt="The qti3 player showing a multiple-choice item and its score" width="560"></a>
 
 ## Start with a working item
 
@@ -52,9 +52,9 @@ see [candidate view](#candidate-view).
 Run repository examples after `pnpm install` and `pnpm build`. Each guide also explains
 how to use the published packages in your own project.
 
-The [interactive manual](https://longsightgroup.github.io/qti3/) loads reference fixtures,
+The [interactive manual](https://qflowlearn.github.io/qti3/) loads reference fixtures,
 QTI packages, or item XML and shows rendering, scoring, validation, state, diagnostics,
-and accessibility evidence. The [shared vocabulary gallery](https://longsightgroup.github.io/qti3/sv-gallery/)
+and accessibility evidence. The [shared vocabulary gallery](https://qflowlearn.github.io/qti3/sv-gallery/)
 provides runnable presentation-class examples.
 
 qti3 covers QTI item and question-type conformance. Host products provide runners, controllers,
@@ -780,7 +780,7 @@ history, and accessibility proof scripts.
 ## Publishing
 
 The packages listed above publish under the `longsightgroup` npm organization. Releases publish
-from the `longsightgroup/qti3` repository after `pnpm release:check` passes. Package tarballs come
+from the `QFlowLearn/qti3` repository after `pnpm release:check` passes. Package tarballs come
 from the same checked build output that CI verifies.
 
 The root and all 12 published packages use the same version. Release preparation updates their

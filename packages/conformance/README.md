@@ -162,7 +162,7 @@ failed import case. Missing input is `unavailable`; a readable untrusted report 
 `unverified`; invalid or unsuccessful trusted evidence is `rejected`.
 
 See the main repository README for the support matrix and release notes:
-https://github.com/LongsightGroup/qti3
+https://github.com/QFlowLearn/qti3
 
 ## Information-model evidence
 

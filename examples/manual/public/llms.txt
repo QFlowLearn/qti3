@@ -4,9 +4,9 @@
 
 ## Project resources
 
-- [Interactive QTI 3 manual](https://longsightgroup.github.io/qti3/): Load reference fixtures, QTI package archives, or QTI XML and inspect rendering, scoring, validation, state, accessibility evidence, and diagnostics.
-- [Shared vocabulary gallery](https://longsightgroup.github.io/qti3/sv-gallery/): Review QTI shared-vocabulary fixtures and their implementation evidence.
-- [Source repository](https://github.com/LongsightGroup/qti3): TypeScript packages, fixtures, tests, examples, issues, and release history.
+- [Interactive QTI 3 manual](https://qflowlearn.github.io/qti3/): Load reference fixtures, QTI package archives, or QTI XML and inspect rendering, scoring, validation, state, accessibility evidence, and diagnostics.
+- [Shared vocabulary gallery](https://qflowlearn.github.io/qti3/sv-gallery/): Review QTI shared-vocabulary fixtures and their implementation evidence.
+- [Source repository](https://github.com/QFlowLearn/qti3): TypeScript packages, fixtures, tests, examples, issues, and release history.
 - [npm packages](https://www.npmjs.com/org/longsightgroup): Published packages under the `@longsightgroup` scope.
 
 ## Package areas

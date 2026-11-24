@@ -11,9 +11,9 @@
     "qti3",
     "typescript"
   ],
-  "homepage": "https://github.com/LongsightGroup/qti3#readme",
+  "homepage": "https://github.com/QFlowLearn/qti3#readme",
   "bugs": {
-    "url": "https://github.com/LongsightGroup/qti3/issues"
+    "url": "https://github.com/QFlowLearn/qti3/issues"
   },
   "license": "MIT",
   "author": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LongsightGroup/qti3.git"
+    "url": "git+https://github.com/QFlowLearn/qti3.git"
   },
   "type": "module",
   "scripts": {

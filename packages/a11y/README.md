@@ -33,4 +33,4 @@ console.log(manualAssistiveTechnologyScripts);
 - Proof metadata used by browser and release checks.
 
 See the main repository README for the support matrix and release notes:
-https://github.com/LongsightGroup/qti3
+https://github.com/QFlowLearn/qti3

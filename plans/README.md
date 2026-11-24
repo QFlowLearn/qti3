@@ -46,7 +46,7 @@ Status values: DRAFT | TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason
 
 ## Coordination notes
 
-- Plan 041 was implemented and reviewed on 2026-09-24 for [issue #29](https://github.com/LongsightGroup/qti3/issues/29) in isolated worktree branch `codex-choice-modal-feedback` through commit `b650a0b`. It has not been merged into `main`.
+- Plan 041 was implemented and reviewed on 2026-09-24 for [issue #29](https://github.com/QFlowLearn/qti3/issues/29) in isolated worktree branch `codex-choice-modal-feedback` through commit `b650a0b`. It has not been merged into `main`.
 - Land 020 before 024, 026, and 027 because all may touch package or CI configuration. Land 024
   before 027 so the Node matrix preserves one intentional browser job.
 - Execute 023 after 022 so characterization coverage protects the snapshot reorganization.

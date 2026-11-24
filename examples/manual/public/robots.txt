@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://longsightgroup.github.io/qti3/sitemap.xml
+Sitemap: https://qflowlearn.github.io/qti3/sitemap.xml

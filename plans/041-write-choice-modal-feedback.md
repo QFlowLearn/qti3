@@ -12,7 +12,7 @@
 - **Depends on:** none
 - **Category:** bug / authoring capability
 - **Planned at:** commit `2214801`, 2026-09-24
-- **Source issue:** [LongsightGroup/qti3#29](https://github.com/LongsightGroup/qti3/issues/29)
+- **Source issue:** [LongsightGroup/qti3#29](https://github.com/QFlowLearn/qti3/issues/29)
 
 ## Why this matters
 
