@@ -1,7 +1,8 @@
 # Render a QTI 3 question in React
 
-Embed a multiple-choice question, capture its response, and show a local preview score.
-The React adapter loads XML into the native qti3 Web Component and forwards its events.
+Use the qti3 React adapter to display a multiple-choice question and score a response
+in your browser. The adapter loads item XML into the native Web Component and
+forwards player events to your React app.
 
 ## Run the complete starter
 
@@ -15,13 +16,14 @@ pnpm install
 pnpm dev
 ```
 
-The starter uses published packages, so no core build is required. You can copy
-`examples/react-starter` into your own project. See its
-[README](../../examples/react-starter/README.md) for expected scores and saved-state behavior.
+The starter uses published packages, so you do not need to build qti3. You can also
+copy `examples/react-starter` into your own project. The
+[starter instructions](../../examples/react-starter/README.md) explain how to check
+scores and save and restore an attempt.
 
 ## Run the repository example
 
-From the repository root, use Node.js 22+ and pnpm:
+With Node.js 22.12 or later and pnpm installed, run these commands from the repository root:
 
 ```sh
 pnpm install
@@ -29,8 +31,9 @@ pnpm build
 pnpm dev:adapter-react
 ```
 
-Open the local `/adapter-react.html` URL. The example loads a synthetic civics question.
-Choose an answer, then select **Serialize via ref** to inspect the saved response.
+On the local server, open `/adapter-react.html`. The example loads a synthetic civics
+question. Choose an answer, then select **Serialize via ref** to inspect the attempt
+state for that response.
 
 ## Add the player to a React app
 
@@ -99,23 +102,26 @@ export default function App() {
 }
 ```
 
-Run `pnpm dev` and open the printed URL. Select the attendance-records answer and
-choose **Score response**. Expect `Score: 1`. Select the repainting answer and score
-again. Expect `Score: 0`.
+Run `pnpm dev` and open the local URL that Vite prints. Choose the attendance-records
+answer, then select **Score response**. Expect `Score: 1`. Choose the repainting
+answer and score again. Expect `Score: 0`.
 
 Vite's `?raw` import loads the XML as text. The fixture is synthetic and MIT-licensed.
-For your own item, replace that import with your XML string. Keep load options and
-host callbacks that affect loading stable across renders; the module-level options
-above keep score-message updates from resetting the question.
+To use your own item, replace the fixture import with your XML string.
+
+Keep load options and callbacks that affect loading stable across renders. In this
+example, `loadOptions` is defined outside the component so score-message updates
+do not reset the question.
 
 ## Connect your host application
 
-Use `onResponseChange` to observe responses and `onStateChange` to observe attempt state.
-The ref exposes `serialize()`, `restore(state)`, and `reset()` for a host-controlled attempt.
+Use `onResponseChange` to read response updates and `onStateChange` to read attempt
+state. Through the player ref, your app can call `serialize()`, `restore(state)`,
+and `reset()` to manage the attempt.
 The [React adapter reference](../../packages/player-react/README.md) describes loading,
 localization, events, and restored state.
 
-This example includes an answer key and scores in the browser for preview. For graded
-delivery, prepare candidate-safe XML on the server and keep authoritative XML and
-scoring there. Follow [server-side scoring](score-qti-node.md) and the
-[candidate-view contract](../../README.md#candidate-view).
+The example includes an answer key for local preview scoring. For graded delivery,
+keep the approved item XML and scoring on the server. Send candidate-safe XML to
+the browser. The [Node scoring guide](score-qti-node.md) and
+[candidate-view contract](../../README.md#candidate-view) describe these steps.

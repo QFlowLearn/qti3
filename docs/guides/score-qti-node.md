@@ -1,12 +1,12 @@
 # Score QTI responses in Node without a browser
 
-Run QTI response processing against authoritative item XML with
-`@longsightgroup/qti3-core`. The core has zero third-party runtime dependencies and
-requires no DOM or player.
+Use `@longsightgroup/qti3-core` to score responses against the item XML your server
+trusts. The core runs without a browser, DOM, or player and has zero third-party
+runtime dependencies.
 
 ## Run the repository example
 
-From the repository root, use Node.js 22+ and pnpm:
+With Node.js 22.12 or later and pnpm installed, run these commands from the repository root:
 
 ```sh
 pnpm install
@@ -34,8 +34,8 @@ Install the core package in your Node project:
 pnpm add @longsightgroup/qti3-core
 ```
 
-Save the linked synthetic item as `item.xml`, then save this code as `score.mjs`
-in the same directory:
+Save the [synthetic QTI 3 item](../../examples/manual/quick-start/item.xml) as
+`item.xml`. In the same directory, save this code as `score.mjs`:
 
 ```js
 import { readFile } from "node:fs/promises";
@@ -56,22 +56,28 @@ if (!result.ok) {
 }
 ```
 
-Run `node score.mjs`. Expect score `1` and an outcomes object containing `SCORE: 1`.
-The response key must match the item's response declaration; its value must match
-that declaration's cardinality and base type. This item declares one identifier.
+Run `node score.mjs`. Expect a score of `1` and an outcomes object containing
+`SCORE: 1`.
+
+The response key, `RESPONSE`, matches the item's response declaration. That declaration
+requires a single identifier, so the response value is the string `"B"`. For other
+items, use the cardinality and base type declared in their XML.
 
 ## Handle scoring results
 
-Check `ok` before accepting a grade, and retain diagnostics for review. A failed
-parse, invalid response, or processing error must not become a zero grade by default.
-A score of zero can be a valid incorrect answer. Human-graded and externally graded
-items need a separate grading workflow; this example uses automatic numeric scoring.
+Check `ok` before you accept a grade, and keep the diagnostics for review. If parsing,
+response validation, or processing fails, handle the error instead of assigning zero.
+Zero can be a valid score for an incorrect answer.
 
-`trustedResponses` is an application boundary. These examples supply fixed synthetic
-values. A delivery host must authenticate the attempt, load its authoritative item,
-and validate submitted identifiers and values before invoking this API. Keep answer
-keys, scoring XML, and saved authoritative state on the server.
+This example uses automatic numeric scoring. Human-graded and externally graded
+items require a separate grading workflow.
 
-The result also includes responses, outcomes, and versioned attempt state. See the
-[core reference](../../packages/core/README.md#server-side-scoring) for scoring APIs
-and the [attempt-state contract](../../README.md#attempt-state) for persistence.
+The examples pass fixed synthetic values in `trustedResponses`. Before your server
+passes learner responses to this API, authenticate the attempt, load the approved
+item XML, and validate the submitted identifiers and values. Keep answer keys,
+scoring XML, and authoritative attempt state on the server.
+
+The result also includes responses, outcomes, and versioned attempt state. The
+[core reference](../../packages/core/README.md#server-side-scoring) describes the
+scoring API. The [attempt-state contract](../../README.md#attempt-state) describes
+the JSON you can save and restore.

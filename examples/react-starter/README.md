@@ -1,45 +1,49 @@
 # QTI 3 React starter
 
-Run a question with the published qti3 React adapter, score a response, and save and
-restore attempt JSON in your browser. This example is synthetic and MIT-licensed.
+Use the published qti3 React adapter to render a question, score a response, and
+save and restore an attempt in your browser. The example item is synthetic and
+MIT-licensed.
 
 [Try the live starter](https://qflowlearn.github.io/qti3/starter/).
 
 ## Run locally
 
-Use Node.js 22.12+ and pnpm 12.21.0. Clone the repository and enter this directory:
+With Node.js 22.12 or later and pnpm 12.21.0 installed, clone the repository and
+enter the starter directory:
 
 ```sh
 git clone --depth 1 https://github.com/QFlowLearn/qti3.git
 cd qti3/examples/react-starter
 ```
 
-Then run:
+Install the packages and start the app:
 
 ```sh
 pnpm install
 pnpm dev
 ```
 
-Open the local URL Vite prints. No qti3 package build is required: this starter uses
-published packages pinned in `package.json`. You can also copy this directory into
-your own project and run the same two commands.
+Open the local URL that Vite prints. The starter uses published packages pinned in
+`package.json`, so you do not need to build qti3. You can also copy this directory
+into your own project and run the same two commands.
 
-Choose the attendance-records answer and select **Score response**: expect `Score: 1`.
-Choose the repainting answer and score again: expect `Score: 0`.
+Choose the attendance-records answer and select **Score response**. Expect `Score: 1`.
+Choose the repainting answer and score again. Expect `Score: 0`.
 
-Choose **Save attempt**, reload the page, and select **Restore saved attempt**.
-The selected response and scored outcomes return. **Reset response** starts a new
-local response without deleting the saved attempt.
+To check restoration, select **Save attempt**. Reload the page, then select
+**Restore saved attempt**. The selected response and scored outcomes return.
+**Reset response** clears the current response without deleting the saved attempt.
 
-Storage belongs to this browser profile and origin. Clearing site data removes the
-saved attempt. This is a preview, not an authoritative assessment or a backup system.
+Use the same browser profile and origin to restore an attempt. An origin consists
+of the scheme, hostname, and port in the URL. Clearing site data deletes the saved
+attempt. For graded delivery, keep the authoritative assessment record on the server.
 
 ## Change the question
 
-Edit `src/App.tsx` to replace the fixture import with your own XML string. The native
-player owns item rendering and QTI processing; this React app owns the buttons,
-status messages, and browser storage. Keep the module-level load options stable.
+In `src/App.tsx`, replace the fixture import with your own XML string. The native
+player renders the item and processes its QTI rules. The React app provides buttons,
+status messages, and browser storage. Keep `loadOptions` outside the component so
+updates to status messages do not reload the question.
 
 `pnpm build` type-checks the app and produces `dist/`. `pnpm preview` serves that build.
 See the [integration guide](https://qflowlearn.github.io/qti3/guides/render-qti-react.html)
