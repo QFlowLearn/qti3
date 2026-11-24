@@ -13,7 +13,8 @@
         "typescript": "7.0.2",
         "vite": "8.3.8",
         "vitest": "5.1.1",
-        "@interfere/landmines": "0.1.1"
+        "@interfere/landmines": "0.1.1",
+        "marked": "18.2.1"
       }
     },
     "examples/manual": {
@@ -338,6 +339,7 @@
     "vite@8.3.8",
     "vitest@5.1.1",
     "why-is-node-running@3.2.1",
-    "zod@4.6.6"
+    "zod@4.6.6",
+    "marked@18.2.1"
   ]
 }

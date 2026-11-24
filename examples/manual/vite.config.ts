@@ -2,6 +2,7 @@ import { access, cp, readdir, readFile } from "node:fs/promises";
 import { extname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { type ResolvedConfig, defineConfig } from "vite";
+import { renderSiteGuide, siteGuideInputs } from "./site-guides.js";
 
 const repoRoot = fileURLToPath(new URL("../../", import.meta.url));
 const galleryHtmlPath = resolve(repoRoot, "examples/manual/sv-gallery/index.html");
@@ -40,6 +41,7 @@ export default defineConfig({
   build: {
     rolldownOptions: {
       input: {
+        ...siteGuideInputs,
         index: resolve(repoRoot, "examples/manual/index.html"),
         convert: resolve(repoRoot, "examples/manual/convert.html"),
         integration: resolve(repoRoot, "examples/manual/integration.html"),
@@ -50,6 +52,19 @@ export default defineConfig({
     },
   },
   plugins: [
+    {
+      name: "qti3-site-guides",
+      transformIndexHtml: {
+        order: "pre",
+        async handler(html, context) {
+          const slug = Object.keys(siteGuideInputs)
+            .find((key) => context.filename === siteGuideInputs[key])
+            ?.split("/")
+            .at(-1);
+          return slug ? renderSiteGuide(slug) : html;
+        },
+      },
+    },
     {
       name: "qti3-playwright-health-check",
       configureServer(server) {
@@ -174,7 +189,7 @@ async function oneEdTechIndexPayload(root: string): Promise<OneEdTechIndexPayloa
 async function indexOneEdTechExamples(root: string): Promise<OneEdTechExampleIndexEntry[]> {
   const files = await walkXmlFiles(root);
   const entries = await Promise.all(
-    files.map(async (filePath) => {
+    files.map(async (filePath): Promise<OneEdTechExampleIndexEntry> => {
       const path = normalizePath(relative(root, filePath));
       const xml = await readFile(filePath, "utf8");
       const rootElement = xml.match(/<qti-(assessment-item|assessment-test)\b[^>]*>/i)?.[0] ?? "";

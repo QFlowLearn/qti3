@@ -1,25 +1,68 @@
 {
   "files": [],
   "references": [
-    { "path": "./packages/core" },
-    { "path": "./packages/core/tsconfig.test.json" },
-    { "path": "./packages/writer" },
-    { "path": "./packages/transcoder" },
-    { "path": "./packages/migrator" },
-    { "path": "./packages/fixtures" },
-    { "path": "./packages/fixtures/tsconfig.test.json" },
-    { "path": "./packages/player" },
-    { "path": "./packages/player/tsconfig.test.json" },
-    { "path": "./packages/player-preact" },
-    { "path": "./packages/player-react" },
-    { "path": "./packages/conformance" },
-    { "path": "./packages/conformance/tsconfig.test.json" },
-    { "path": "./packages/pnp" },
-    { "path": "./packages/a11y" },
-    { "path": "./packages/cli" },
-    { "path": "./packages/cli/tsconfig.test.json" },
-    { "path": "./examples/manual/tsconfig.convert.json" },
-    { "path": "./examples/manual/tsconfig.library.json" },
-    { "path": "./tests/tooling" }
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/core/tsconfig.test.json"
+    },
+    {
+      "path": "./packages/writer"
+    },
+    {
+      "path": "./packages/transcoder"
+    },
+    {
+      "path": "./packages/migrator"
+    },
+    {
+      "path": "./packages/fixtures"
+    },
+    {
+      "path": "./packages/fixtures/tsconfig.test.json"
+    },
+    {
+      "path": "./packages/player"
+    },
+    {
+      "path": "./packages/player/tsconfig.test.json"
+    },
+    {
+      "path": "./packages/player-preact"
+    },
+    {
+      "path": "./packages/player-react"
+    },
+    {
+      "path": "./packages/conformance"
+    },
+    {
+      "path": "./packages/conformance/tsconfig.test.json"
+    },
+    {
+      "path": "./packages/pnp"
+    },
+    {
+      "path": "./packages/a11y"
+    },
+    {
+      "path": "./packages/cli"
+    },
+    {
+      "path": "./packages/cli/tsconfig.test.json"
+    },
+    {
+      "path": "./examples/manual/tsconfig.convert.json"
+    },
+    {
+      "path": "./examples/manual/tsconfig.library.json"
+    },
+    {
+      "path": "./tests/tooling"
+    },
+    {
+      "path": "./examples/manual/tsconfig.site.json"
+    }
   ]
 }

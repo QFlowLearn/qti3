@@ -43,11 +43,11 @@ see [candidate view](#candidate-view).
 
 ## Build your first integration
 
-| Your task                         | Guide                                                               | Runnable example                               |
-| --------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------- |
-| Render a question in React        | [Render a QTI 3 question in React](docs/guides/render-qti-react.md) | `pnpm dev:adapter-react`                       |
-| Score responses without a browser | [Score QTI responses in Node](docs/guides/score-qti-node.md)        | `node examples/manual/quick-start/score.mjs`   |
-| Convert older item XML            | [Migrate QTI 2 items to QTI 3](docs/guides/migrate-qti2.md)         | `node examples/manual/quick-start/migrate.mjs` |
+| Your task                         | Guide                                                                                              | Runnable example                               |
+| --------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Render a question in React        | [Render a QTI 3 question in React](https://qflowlearn.github.io/qti3/guides/render-qti-react.html) | `pnpm dev:adapter-react`                       |
+| Score responses without a browser | [Score QTI responses in Node](https://qflowlearn.github.io/qti3/guides/score-qti-node.html)        | `node examples/manual/quick-start/score.mjs`   |
+| Convert older item XML            | [Migrate QTI 2 items to QTI 3](https://qflowlearn.github.io/qti3/guides/migrate-qti2.html)         | `node examples/manual/quick-start/migrate.mjs` |
 
 Run repository examples after `pnpm install` and `pnpm build`. Each guide also explains
 how to use the published packages in your own project.

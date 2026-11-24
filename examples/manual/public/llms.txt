@@ -9,6 +9,12 @@
 - [Source repository](https://github.com/QFlowLearn/qti3): TypeScript packages, fixtures, tests, examples, issues, and release history.
 - [npm packages](https://www.npmjs.com/org/longsightgroup): Published packages under the `@longsightgroup` scope.
 
+## Integration guides
+
+- [render qti react](https://qflowlearn.github.io/qti3/guides/render-qti-react.html)
+- [score qti node](https://qflowlearn.github.io/qti3/guides/score-qti-node.html)
+- [migrate qti2](https://qflowlearn.github.io/qti3/guides/migrate-qti2.html)
+
 ## Package areas
 
 - Core: Parse, validate, process, score, serialize, and restore QTI item state.

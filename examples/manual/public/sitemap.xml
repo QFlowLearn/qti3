@@ -20,4 +20,16 @@
     <loc>https://qflowlearn.github.io/qti3/sv-gallery/</loc>
     <lastmod>2026-11-24</lastmod>
   </url>
+  <url>
+    <loc>https://qflowlearn.github.io/qti3/guides/render-qti-react.html</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://qflowlearn.github.io/qti3/guides/score-qti-node.html</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://qflowlearn.github.io/qti3/guides/migrate-qti2.html</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
 </urlset>

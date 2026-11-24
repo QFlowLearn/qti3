@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "noEmit": true,
+    "tsBuildInfoFile": "../../node_modules/.cache/qti3-site.tsbuildinfo"
+  },
+  "include": ["site-guides.ts", "vite.config.ts"]
+}
