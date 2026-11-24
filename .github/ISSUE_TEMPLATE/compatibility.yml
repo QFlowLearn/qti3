@@ -1,0 +1,77 @@
+name: QTI import or compatibility problem
+description: Report a reproducible rendering, scoring, validation, or migration problem.
+title: "[Compatibility]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us reproduce the problem with synthetic XML or a public, licensed sample.
+        Do not upload private question banks, official certification packages, learner data,
+        real assessment answer keys, credentials, or customer content. If you cannot share
+        the source, describe the behavior and include scrubbed diagnostics instead.
+  - type: input
+    id: source
+    attributes:
+      label: Source system and export format
+      description: Name the source product, version if known, and QTI export setting.
+      placeholder: Product/version; QTI 2.1 item XML, QTI 3 package ZIP, or unknown
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: qti3 packages and runtime versions
+      description: Include affected package versions, Node or browser version, and operating system.
+    validations:
+      required: true
+  - type: dropdown
+    id: operation
+    attributes:
+      label: Affected operation
+      options:
+        - Parse or validate
+        - Render or interact
+        - Score or process responses
+        - Save or restore attempt state
+        - Migrate legacy QTI
+        - Transcode or export
+        - Import a package
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the exact command or page, item selection, and response values.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result and actual result
+      description: For scoring, include the submitted answer and independently expected score. For accessibility, describe the keyboard or assistive-technology behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: Paste scrubbed output with diagnostic codes, severity, and paths. Say "none" if no diagnostics appear.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction and its license
+      description: Paste synthetic item XML, link a public licensed sample, or explain why no shareable reproduction is available. Name the license for external samples. Keep assets minimal.
+    validations:
+      required: true
+  - type: checkboxes
+    id: sharing
+    attributes:
+      label: Public sharing
+      options:
+        - label: I have removed private assessment content, learner data, credentials, and other material I cannot publish.
+          required: true

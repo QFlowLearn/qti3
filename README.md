@@ -72,6 +72,12 @@ supports the open-standards direction used by
 [QFlowLearn's QTI 3 assessment platform](https://www.qflowlearn.com/standards/qti-3/).
 Product-specific authoring and delivery remain outside this repository.
 
+## Help improve qti3
+
+[Report a compatibility problem](https://github.com/QFlowLearn/qti3/issues/new?template=compatibility.yml)
+with synthetic XML or a public licensed sample, or [pick a starter task](https://github.com/QFlowLearn/qti3/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22).
+The [contribution guide](CONTRIBUTING.md) explains reproduction, licensing, and checks.
+
 ## Project shape
 
 `qti3` is item-focused: the core owns QTI semantics, the player renders one item at a

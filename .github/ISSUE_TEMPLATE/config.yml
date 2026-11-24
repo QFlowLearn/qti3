@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Integration guides and runnable examples
+    url: https://qflowlearn.github.io/qti3/guides/render-qti-react.html
+    about: Start with the React app, Node scoring, migration, and real integration walkthroughs.
+  - name: Contribution guide
+    url: https://github.com/QFlowLearn/qti3/blob/main/CONTRIBUTING.md
+    about: Find starter tasks, run checks, and prepare a useful compatibility report.
