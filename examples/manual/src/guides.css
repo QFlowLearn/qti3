@@ -20,6 +20,39 @@
   background: var(--panel);
   font-size: 0.9rem;
 }
+.guide-content pre code {
+  display: block;
+  color: #24292f;
+}
+.guide-content .hljs-keyword,
+.guide-content .hljs-doctag,
+.guide-content .hljs-type {
+  color: #a62636;
+}
+.guide-content .hljs-string,
+.guide-content .hljs-regexp {
+  color: #0a3069;
+}
+.guide-content .hljs-number,
+.guide-content .hljs-literal,
+.guide-content .hljs-attr,
+.guide-content .hljs-attribute {
+  color: #0550ae;
+}
+.guide-content .hljs-title,
+.guide-content .hljs-built_in {
+  color: #6639a6;
+}
+.guide-content .hljs-comment {
+  color: #57606a;
+}
+.guide-content .hljs-name {
+  color: #116329;
+}
+.guide-content .hljs-meta,
+.guide-content .hljs-symbol {
+  color: #953800;
+}
 .guide-content :not(pre) > code {
   overflow-wrap: anywhere;
 }
@@ -69,6 +102,10 @@
   }
 }
 @media (forced-colors: active) {
+  .guide-content pre code,
+  .guide-content pre code span {
+    color: CanvasText;
+  }
   .guide-content pre,
   .guide-outline {
     border-color: CanvasText;

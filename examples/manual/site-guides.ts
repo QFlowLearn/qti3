@@ -1,6 +1,11 @@
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { Marked, Renderer } from "marked";
+import hljs from "highlight.js/lib/core";
+import bash from "highlight.js/lib/languages/bash";
+import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
+import xml from "highlight.js/lib/languages/xml";
 
 export const siteGuides = [
   {
@@ -51,6 +56,13 @@ export async function renderSiteGuide(slug: string): Promise<string> {
     new URL(`../../docs/guides/${guide.slug}.md`, import.meta.url),
     "utf8",
   );
+  const syntax = hljs.newInstance();
+  syntax.registerLanguage("bash", bash);
+  syntax.registerLanguage("javascript", javascript);
+  syntax.registerLanguage("typescript", typescript);
+  syntax.registerLanguage("xml", xml);
+  syntax.registerAliases(["sh", "shell"], { languageName: "bash" });
+  syntax.registerAliases("tsx", { languageName: "typescript" });
   const renderer = new Renderer();
   renderer.link = function (token) {
     const linkedGuide = siteGuides.find((entry) => token.href === `${entry.slug}.md`);
@@ -60,7 +72,14 @@ export async function renderSiteGuide(slug: string): Promise<string> {
     return `<a href="${escapeHtml(href)}">${this.parser.parseInline(token.tokens)}</a>`;
   };
   renderer.code = function (token) {
-    return `<pre tabindex="0" aria-label="Code example"><code>${escapeHtml(token.text)}</code></pre>\n`;
+    const language = token.lang?.trim().split(/\s+/)[0] || "text";
+    let code = escapeHtml(token.text);
+    if (language !== "text" && language !== "plaintext") {
+      if (!syntax.getLanguage(language))
+        throw new Error(`Unsupported guide code language: ${language}`);
+      code = syntax.highlight(token.text, { language, ignoreIllegals: true }).value;
+    }
+    return `<pre tabindex="0" aria-label="${escapeHtml(language.toUpperCase())} code example"><code class="hljs language-${escapeHtml(language)}">${code}</code></pre>\n`;
   };
   renderer.heading = function (token) {
     return `<h${token.depth} id="${headingId(token.text)}">${this.parser.parseInline(token.tokens)}</h${token.depth}>\n`;

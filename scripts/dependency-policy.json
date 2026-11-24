@@ -14,7 +14,8 @@
         "vite": "8.3.8",
         "vitest": "5.1.1",
         "@interfere/landmines": "0.1.1",
-        "marked": "18.2.1"
+        "marked": "18.2.1",
+        "highlight.js": "11.12.0"
       }
     },
     "examples/manual": {
@@ -360,6 +361,7 @@
     "@longsightgroup/qti3-core@0.13.4",
     "@longsightgroup/qti3-fixtures@0.13.4",
     "@longsightgroup/qti3-player@0.13.4",
-    "@longsightgroup/qti3-player-react@0.13.4"
+    "@longsightgroup/qti3-player-react@0.13.4",
+    "highlight.js@11.12.0"
   ]
 }

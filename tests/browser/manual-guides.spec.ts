@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { installAxe } from "./axe-helpers.js";
 
@@ -60,3 +61,33 @@ for (const guide of guides) {
     expect(violations).toEqual([]);
   });
 }
+
+test("highlights the React example without changing copyable code and supports forced colors", async ({
+  page,
+}) => {
+  await page.goto("/guides/render-qti-react.html");
+  const source = await readFile(
+    new URL("../../docs/guides/render-qti-react.md", import.meta.url),
+    "utf8",
+  );
+  const expected = source.match(/```tsx\n([\s\S]*?)\n```/)?.[1];
+  if (!expected) throw new Error("Missing TSX reference example.");
+  const block = page.getByLabel("TSX code example", { exact: true });
+  const code = block.locator("code");
+  expect(await code.textContent()).toBe(expected);
+  await expect(code.locator("main, h1, button")).toHaveCount(0);
+  const keyword = code.getByText("import", { exact: true }).first();
+  const string = code.getByText('"react"', { exact: true });
+  const keywordColor = await keyword.evaluate((element) => getComputedStyle(element).color);
+  const stringColor = await string.evaluate((element) => getComputedStyle(element).color);
+  expect(keywordColor).not.toBe(stringColor);
+  await block.focus();
+  await expect(block).toBeFocused();
+  await page.setViewportSize({ width: 360, height: 800 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.emulateMedia({ forcedColors: "active" });
+  const textColor = await code.evaluate((element) => getComputedStyle(element).color);
+  expect(await keyword.evaluate((element) => getComputedStyle(element).color)).toBe(textColor);
+  expect(await string.evaluate((element) => getComputedStyle(element).color)).toBe(textColor);
+  expect(await code.textContent()).toBe(expected);
+});
